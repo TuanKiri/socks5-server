@@ -5,7 +5,7 @@ RUN go mod download
 COPY . .
 
 FROM base AS build
-RUN go build -ldflags "-s -w" -o /bin/server main.go
+RUN go build -ldflags "-s -w" -o /bin/server ./cmd/main.go
 
 FROM alpine:3.19 AS prod
 COPY --from=build /bin/server /bin/
