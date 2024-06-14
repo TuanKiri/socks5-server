@@ -5,9 +5,9 @@ RUN go mod download
 COPY . .
 
 FROM base AS build
-RUN go build -ldflags "-s -w" -o /bin/server ./cmd/main.go
+RUN go build -ldflags "-s -w" -o /bin/server main.go
 
-FROM scratch AS prod
+FROM alpine:3.19 AS prod
 COPY --from=build /bin/server /bin/
 EXPOSE 1080
-ENTRYPOINT [ "/bin/server" ]
+CMD /bin/server >> /var/log/socks5.log 2>&1
