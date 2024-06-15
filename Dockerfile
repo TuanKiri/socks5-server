@@ -9,5 +9,16 @@ RUN go build -ldflags "-s -w" -o /bin/server ./cmd/main.go
 
 FROM alpine:3.19 AS prod
 COPY --from=build /bin/server /bin/
+ARG USERNAME=user
+ARG USER_UID=1000
+ARG USER_GID=1000
+RUN apk update && apk add --no-cache \
+    sudo \
+    shadow \
+    && addgroup -g $USER_GID $USERNAME \
+    && adduser -u $USER_UID -G $USERNAME -s /bin/sh -D $USERNAME \
+    && mkdir -p /var/log/socks5 \
+    && chown $USER_UID:$USER_GID /var/log/socks5
+USER $USERNAME
 EXPOSE 1080
-CMD /bin/server >> /var/log/socks5.log 2>&1
+CMD /bin/server >> /var/log/socks5/socks5.log 2>&1
