@@ -45,8 +45,8 @@ func getStaticCredentials() (bool, map[string]string) {
 func getWhiteListIPs() (bool, []net.IP) {
 	var whiteListIPs []net.IP
 
-	if witeList := os.Getenv("WITE_LIST_IPS"); witeList != "" {
-		ips := strings.Split(witeList, ",")
+	if whiteList := os.Getenv("WHITE_LIST_IPS"); whiteList != "" {
+		ips := strings.Split(whiteList, ",")
 
 		for _, ip := range ips {
 			whiteListIPs = append(whiteListIPs, net.ParseIP(ip))

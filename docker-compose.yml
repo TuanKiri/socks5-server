@@ -6,7 +6,7 @@ services:
     environment:
       SOCKS5_USER: ${SOCKS5_USER}
       SOCKS5_PASSWORD: ${SOCKS5_PASSWORD}
-      WITE_LIST_IPS: ${WITE_LIST_IPS} # example: 192.168.1.243,185.52.141.19
+      WHITE_LIST_IPS: ${WHITE_LIST_IPS} # example: 192.168.1.243,185.52.141.19
     volumes:
       - "./runtime/logs/socks5:/var/log/socks5:cached"
     ports:
