@@ -1,3 +1,4 @@
+
 FROM golang:1.22.3-alpine3.19 AS base
 WORKDIR /src
 COPY go.mod go.sum ./
@@ -9,9 +10,9 @@ RUN go build -ldflags "-s -w" -o /bin/server ./cmd/main.go
 
 FROM alpine:3.19 AS prod
 COPY --from=build /bin/server /bin/
+ARG USER_UID
+ARG USER_GID
 ARG USERNAME=user
-ARG USER_UID=1000
-ARG USER_GID=1000
 RUN apk update && apk add --no-cache \
     sudo \
     shadow \

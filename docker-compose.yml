@@ -1,7 +1,11 @@
 version: '3.5'
 services:
   socks5:
-    image: jc5lziy3hvfv5ux/socks5-alpine3.19:latest
+    build:
+      context: .
+      args:
+        USER_UID: ${USER_UID:-1000}
+        USER_GID: ${USER_GID:-1000}
     restart: always
     environment:
       SOCKS5_USER: ${SOCKS5_USER}
@@ -10,4 +14,4 @@ services:
     volumes:
       - "./runtime/logs/socks5:/var/log/socks5:cached"
     ports:
-      - ${SOCKS5_PORT:-1080}:1080
+      - ${SOCKS5_PORT:-1080}:1080/tcp
