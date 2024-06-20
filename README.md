@@ -4,14 +4,8 @@ A simple example of a socks5 proxy server based on a package [JC5LZiy3HVfV5ux/so
 
 ## Install
 
-GitHub:
 ```sh
 git clone https://github.com/JC5LZiy3HVfV5ux/simple-socks5-proxy.git
-```
-
-Docker Hub
-```sh
-docker pull jc5lziy3hvfv5ux/socks5-alpine3.19:latest
 ```
 
 ## Configuration
@@ -28,21 +22,24 @@ SOCKS5_PASSWORD=
 WHITE_LIST_IPS=
 ```
 
+## Build
+
+Set your linux user's `uid` and `gid`.
+
+```sh
+docker build --build-arg USER_UID=${USER_UID:-1000} --build-arg USER_GID=${USER_GID:-1000} -t socks5 .
+```
+
 ## Run
 
-Golang:
 ```sh
-go run ./cmd/main.go
+docker run -d -v ./runtime/logs/socks5:/var/log/socks5 -p 1080:1080/tcp socks5 
 ```
 
-Docker run:
-```sh
-docker run -d -p 1080:1080/tcp jc5lziy3hvfv5ux/socks5-alpine3.19:latest 
-```
+## Test
 
-Docker compose:
 ```sh
-docker-compose up -d socks5
+curl -x socks5://127.0.0.1:1080 http://example.com
 ```
 
 ## License
