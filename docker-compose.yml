@@ -3,15 +3,10 @@ services:
   socks5:
     build:
       context: .
-      args:
-        USER_UID: ${USER_UID:-1000}
-        USER_GID: ${USER_GID:-1000}
     restart: always
     environment:
       SOCKS5_USER: ${SOCKS5_USER}
       SOCKS5_PASSWORD: ${SOCKS5_PASSWORD}
       WHITE_LIST_IPS: ${WHITE_LIST_IPS} # example: 192.168.1.243,185.52.141.19
-    volumes:
-      - "./runtime/logs/socks5:/var/log/socks5:cached"
     ports:
       - ${SOCKS5_PORT:-1080}:1080/tcp
