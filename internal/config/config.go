@@ -6,7 +6,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/JC5LZiy3HVfV5ux/socks5"
+	"github.com/TuanKiri/socks5"
 )
 
 func NewFromEnv() []socks5.Option {

@@ -1,11 +1,11 @@
 # simple-socks5-proxy
 
-A simple example of a socks5 proxy server based on a package [JC5LZiy3HVfV5ux/socks5](https://github.com/JC5LZiy3HVfV5ux/socks5).
+A simple example of a socks5 proxy server based on a package [TuanKiri/socks5](https://github.com/TuanKiri/socks5).
 
 ## Install
 
 ```sh
-git clone https://github.com/JC5LZiy3HVfV5ux/simple-socks5-proxy.git
+git clone https://github.com/TuanKiri/simple-socks5-proxy.git
 ```
 
 ## Configuration

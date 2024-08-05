@@ -6,9 +6,9 @@ import (
 	"os/signal"
 	"syscall"
 
-	"github.com/JC5LZiy3HVfV5ux/socks5"
+	"github.com/TuanKiri/socks5"
 
-	"github.com/JC5LZiy3HVfV5ux/simple-socks5-proxy/internal/config"
+	"github.com/TuanKiri/simple-socks5-proxy/internal/config"
 )
 
 func main() {
