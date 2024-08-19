@@ -3,7 +3,7 @@
 [![license](https://img.shields.io/badge/license-MIT-red.svg)](LICENSE)
 [![go version](https://img.shields.io/github/go-mod/go-version/TuanKiri/socks5)](go.mod)
 
-A example of a socks5 proxy server based on a package [TuanKiri/socks5](https://github.com/TuanKiri/socks5).
+An example of a socks5 proxy server based on a package [TuanKiri/socks5](https://github.com/TuanKiri/socks5).
 
 ## Install
 
