@@ -10,6 +10,5 @@ RUN CGO_ENABLED=0 GOOS=linux go build -a -ldflags '-extldflags "-static" -s -w' 
 FROM gcr.io/distroless/static-debian11
 COPY --from=build /server /server
 USER nonroot:nonroot
-EXPOSE 1080
 WORKDIR /
 CMD ["/server"]

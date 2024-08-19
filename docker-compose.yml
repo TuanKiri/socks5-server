@@ -1,12 +1,7 @@
 version: '3.5'
 services:
   socks5:
-    build:
-      context: .
+    image: tuankiri/socks5:0.9.0
+    network_mode: "host"
+    env_file: .env
     restart: always
-    environment:
-      SOCKS5_USER: ${SOCKS5_USER}
-      SOCKS5_PASSWORD: ${SOCKS5_PASSWORD}
-      WHITE_LIST_IPS: ${WHITE_LIST_IPS} # example: 192.168.1.243,185.52.141.19
-    ports:
-      - ${SOCKS5_PORT:-1080}:1080/tcp
