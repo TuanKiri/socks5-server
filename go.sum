@@ -1,5 +1,7 @@
-github.com/TuanKiri/socks5 v0.8.1 h1:Ls427kfDR8w2QsTEJxIW53kFxovQsDG8HtYEGgFhaJM=
-github.com/TuanKiri/socks5 v0.8.1/go.mod h1:hto6TYehONY8tBdvKgP9EWYEkm0dYAjWql6ISmjeAhU=
+github.com/TuanKiri/socks5 v0.9.0 h1:yI6iKoxjHfUWf32x/ayX969K/ylAm2SzkXn+50rI7Ms=
+github.com/TuanKiri/socks5 v0.9.0/go.mod h1:hto6TYehONY8tBdvKgP9EWYEkm0dYAjWql6ISmjeAhU=
+github.com/caarlos0/env/v11 v11.2.2 h1:95fApNrUyueipoZN/EhA8mMxiNxrBwDa+oAZrMWl3Kg=
+github.com/caarlos0/env/v11 v11.2.2/go.mod h1:JBfcdeQiBoI3Zh1QRAWfe+tpiNTmDtcCj/hHHHMx0vc=
 github.com/davecgh/go-spew v1.1.1 h1:vj9j/u1bqnvCEfJOwUhtlOARqs3+rkHYY13jYWTU97c=
 github.com/davecgh/go-spew v1.1.1/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
 github.com/pmezard/go-difflib v1.0.0 h1:4DBwDE0NGyQoBHbLQYPwSUPoCMWR5BEzIk/f1lZbAQM=
