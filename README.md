@@ -72,6 +72,12 @@ docker run --env-file .env --network host socks5
 curl -x socks5://127.0.0.1:1080 http://example.com
 ```
 
+## Contributing
+Feel free to open tickets or send pull requests with improvements. Thanks in advance for your help!
+
+Please follow the [contribution guidelines](.github/CONTRIBUTING.md).
+
+
 ## License
 
 All source code is licensed under the MIT License.
