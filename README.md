@@ -67,7 +67,7 @@ PUBLIC_IP=
 `linux/amd64`
 
 ```sh
-docker pull ghcr.io/TuanKiri/socks5:latest
+docker pull ghcr.io/tuankiri/socks5:latest
 ```
 
 ## Docker Compose
