@@ -1,22 +1,35 @@
-# socks5-proxy
+<div align="center">
+
+<h1>SOCKS5 Proxy</h1>
 
 [![license](https://img.shields.io/badge/license-MIT-red.svg)](LICENSE)
 [![go version](https://img.shields.io/github/go-mod/go-version/TuanKiri/socks5)](go.mod)
+[![docker hub](https://img.shields.io/docker/pulls/tuankiri/socks5)](https://hub.docker.com/r/tuankiri/socks5)
+[![docker version](https://img.shields.io/docker/v/tuankiri/socks5)](https://hub.docker.com/r/tuankiri/socks5)
+[![docker size](https://img.shields.io/docker/image-size/tuankiri/socks5)](https://hub.docker.com/r/tuankiri/socks5)
 
-An example of a socks5 proxy server based on a package [TuanKiri/socks5](https://github.com/TuanKiri/socks5).
+</div>
 
-## Install
+## Overview
 
-```sh
-git clone https://github.com/TuanKiri/socks5-proxy.git
-```
+SOCKS5 proxy server based on a package [github.com/TuanKiri/socks5](https://github.com/TuanKiri/socks5).
+
+
+## Features
+
+- SOCKS5 CONNECT command
+- SOCKS5 UDP ASSOCIATE command
+- IPv4, IPv6, FQDN
+- Username/Password Authentication
+- ACL (Access Control List)
 
 ## Configuration
 
-Set environment variables as desired.
+Set environment variables:
 
 ```sh
 # If authentication on the server is required (RFC 1929).
+# default: no authentication required
 SOCKS5_USER=
 SOCKS5_PASSWORD=
 # 1 - Connect, 2 - Bind (not support), 3 - UDP Associate.
@@ -25,6 +38,7 @@ SOCKS5_PASSWORD=
 ALLOWED_COMMANDS=
 # If you need only certain IP addresses to be able to connect to the server.
 # example: 192.168.1.243,185.52.141.19
+# default: none
 WHITE_LIST_IPS=
 # Timeouts for TCP connection. Valid time units are ns, us (or µs), ms, s, m, h.
 # example: DIAL_TIMEOUT=5s 
@@ -46,6 +60,14 @@ MAX_PACKET_SIZE=
 # example: 192.168.1.243
 # default: 127.0.0.1
 PUBLIC_IP=
+```
+
+## Pull from GitHub Container Registry
+
+`linux/amd64`
+
+```sh
+docker pull ghcr.io/TuanKiri/socks5:latest
 ```
 
 ## Docker Compose
