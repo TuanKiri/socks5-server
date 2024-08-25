@@ -1,15 +1,16 @@
-# socks5-proxy
+<div align="center">
+
+<h1>SOCKS5 Proxy</h1>
 
 [![license](https://img.shields.io/badge/license-MIT-red.svg)](LICENSE)
 [![go version](https://img.shields.io/github/go-mod/go-version/TuanKiri/socks5)](go.mod)
+[![docker hub](https://img.shields.io/docker/pulls/tuankiri/socks5)](https://hub.docker.com/r/tuankiri/socks5)
+[![docker version](https://img.shields.io/docker/v/tuankiri/socks5)](https://hub.docker.com/r/tuankiri/socks5)
+[![docker size](https://img.shields.io/docker/image-size/tuankiri/socks5)](https://hub.docker.com/r/tuankiri/socks5)
 
-An example of a socks5 proxy server based on a package [TuanKiri/socks5](https://github.com/TuanKiri/socks5).
+An example of a socks5 proxy server based on a package [github.com/TuanKiri/socks5](https://github.com/TuanKiri/socks5).
 
-## Install
-
-```sh
-git clone https://github.com/TuanKiri/socks5-proxy.git
-```
+</div>
 
 ## Configuration
 

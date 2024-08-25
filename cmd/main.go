@@ -26,45 +26,6 @@ type config struct {
 	PublicIP           string        `env:"PUBLIC_IP"`
 }
 
-func (c *config) toOptions() []socks5.Option {
-	opts := []socks5.Option{
-		socks5.WithDialTimeout(c.DialTimeout),
-		socks5.WithReadTimeout(c.ReadTimeout),
-		socks5.WithWriteTimeout(c.WriteTimeout),
-		socks5.WithPacketWriteTimeout(c.PacketWriteTimeout),
-		socks5.WithPublicIP(net.ParseIP(c.PublicIP)),
-		socks5.WithMaxPacketSize(c.MaxPacketSize),
-	}
-
-	if c.User != "" && c.Password != "" {
-		opts = append(opts,
-			socks5.WithPasswordAuthentication(),
-			socks5.WithStaticCredentials(map[string]string{
-				c.User: c.Password,
-			}),
-		)
-	}
-
-	if len(c.WhiteListIPS) > 0 {
-		whiteListIPS := make([]net.IP, len(c.WhiteListIPS))
-		for i, ip := range c.WhiteListIPS {
-			whiteListIPS[i] = net.ParseIP(ip)
-		}
-		opts = append(opts,
-			socks5.WithWhiteListIPs(whiteListIPS...),
-		)
-	}
-
-	if len(c.AllowedCommands) > 0 {
-		allowedCommands := make([]socks5.Command, len(c.AllowedCommands))
-		for i, command := range c.AllowedCommands {
-			allowedCommands[i] = socks5.Command(command)
-		}
-	}
-
-	return opts
-}
-
 func main() {
 	var cfg config
 
@@ -72,10 +33,45 @@ func main() {
 		log.Fatal(err)
 	}
 
+	opts := []socks5.Option{
+		socks5.WithDialTimeout(cfg.DialTimeout),
+		socks5.WithReadTimeout(cfg.ReadTimeout),
+		socks5.WithWriteTimeout(cfg.WriteTimeout),
+		socks5.WithPacketWriteTimeout(cfg.PacketWriteTimeout),
+		socks5.WithPublicIP(net.ParseIP(cfg.PublicIP)),
+		socks5.WithMaxPacketSize(cfg.MaxPacketSize),
+	}
+
+	if cfg.User != "" && cfg.Password != "" {
+		opts = append(opts,
+			socks5.WithPasswordAuthentication(),
+			socks5.WithStaticCredentials(map[string]string{
+				cfg.User: cfg.Password,
+			}),
+		)
+	}
+
+	if len(cfg.WhiteListIPS) > 0 {
+		whiteListIPS := make([]net.IP, len(cfg.WhiteListIPS))
+		for i, ip := range cfg.WhiteListIPS {
+			whiteListIPS[i] = net.ParseIP(ip)
+		}
+		opts = append(opts,
+			socks5.WithWhiteListIPs(whiteListIPS...),
+		)
+	}
+
+	if len(cfg.AllowedCommands) > 0 {
+		allowedCommands := make([]socks5.Command, len(cfg.AllowedCommands))
+		for i, command := range cfg.AllowedCommands {
+			allowedCommands[i] = socks5.Command(command)
+		}
+	}
+
 	ctx, stop := signal.NotifyContext(context.Background(), syscall.SIGINT, syscall.SIGTERM)
 	defer stop()
 
-	srv := socks5.New(cfg.toOptions()...)
+	srv := socks5.New(opts...)
 
 	go func() {
 		if err := srv.ListenAndServe(); err != nil {
