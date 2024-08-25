@@ -1,7 +1,7 @@
 version: '3.5'
 services:
   socks5:
-    image: tuankiri/socks5:0.9.0
+    image: tuankiri/socks5:latest
     network_mode: "host"
     env_file: .env
     restart: always
