@@ -12,7 +12,7 @@
 
 ## Overview
 
-SOCKS5 proxy server based on a package [github.com/TuanKiri/socks5](https://github.com/TuanKiri/socks5).
+SOCKS5 proxy server based on a package [socks5](https://github.com/TuanKiri/socks5).
 
 
 ## Features
@@ -40,13 +40,15 @@ ALLOWED_COMMANDS=
 # example: 192.168.1.243,185.52.141.19
 # default: none
 WHITE_LIST_IPS=
-# Timeouts for TCP connection. Valid time units are ns, us (or µs), ms, s, m, h.
+# Timeouts for TCP connection. 
+# Valid time units are ns, us (or µs), ms, s, m, h.
 # example: DIAL_TIMEOUT=5s 
 # default: none
 DIAL_TIMEOUT=
 READ_TIMEOUT=
 WRITE_TIMEOUT=
-# Timeouts for UDP connection. Valid time units are ns, us (or µs), ms, s, m, h.
+# Timeouts for UDP connection. 
+# Valid time units are ns, us (or µs), ms, s, m, h.
 # example: PACKET_WRITE_TIMEOUT=5s
 # default: none
 PACKET_WRITE_TIMEOUT=
@@ -60,6 +62,19 @@ MAX_PACKET_SIZE=
 # example: 192.168.1.243
 # default: 127.0.0.1
 PUBLIC_IP=
+# Enable logging
+# default: FALSE
+LOGGING=
+# Cleanup period for UDP packets that do not receive a response. 
+# Valid time units are ns, us (or µs), ms, s, m, h.
+# example: NAT_CLEANUP_PERIOD=5s
+# default: none
+NAT_CLEANUP_PERIOD=
+# Lifetime of each udp packet. 
+# Valid time units are ns, us (or µs), ms, s, m, h.
+# example: TTLPacket=5s
+# default: none
+TTLPacket=
 ```
 
 ## Pull from GitHub Container Registry
@@ -74,18 +89,6 @@ docker pull ghcr.io/tuankiri/socks5:latest
 
 ```sh
 docker-compose up -d socks5
-```
-
-## Build
-
-```sh
-docker build -t socks5 .
-```
-
-## Run
-
-```sh
-docker run --env-file .env --network host socks5
 ```
 
 ## Test

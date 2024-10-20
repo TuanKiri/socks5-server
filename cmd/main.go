@@ -24,6 +24,9 @@ type config struct {
 	PacketWriteTimeout time.Duration `env:"PACKET_WRITE_TIMEOUT"`
 	MaxPacketSize      int           `env:"MAX_PACKET_SIZE"`
 	PublicIP           string        `env:"PUBLIC_IP"`
+	Logging            bool          `env:"LOGGING"`
+	NatCleanupPeriod   time.Duration `env:"NAT_CLEANUP_PERIOD"`
+	TTLPacket          time.Duration `env:"TTLPacket"`
 }
 
 func main() {
@@ -40,6 +43,8 @@ func main() {
 		socks5.WithPacketWriteTimeout(cfg.PacketWriteTimeout),
 		socks5.WithPublicIP(net.ParseIP(cfg.PublicIP)),
 		socks5.WithMaxPacketSize(cfg.MaxPacketSize),
+		socks5.WithNatCleanupPeriod(cfg.NatCleanupPeriod),
+		socks5.WithTTLPacket(cfg.TTLPacket),
 	}
 
 	if cfg.User != "" && cfg.Password != "" {
@@ -66,6 +71,12 @@ func main() {
 		for i, command := range cfg.AllowedCommands {
 			allowedCommands[i] = socks5.Command(command)
 		}
+	}
+
+	if !cfg.Logging {
+		opts = append(opts,
+			socks5.WithLogger(socks5.NopLogger),
+		)
 	}
 
 	ctx, stop := signal.NotifyContext(context.Background(), syscall.SIGINT, syscall.SIGTERM)
